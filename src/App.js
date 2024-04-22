@@ -5,7 +5,10 @@ import HomePage from './pages/HomePage'
 import ProfilPage from './pages/ProfilPage'
 import PublicPage from './pages/PublicPage'
 import { UidContext } from './components/AppContext'
+import Navbar from './components/Navbar'
 import axios from 'axios'
+import { useDispatch } from 'react-redux'
+import { getUser } from './actions/user.actions'
 
 const router = createBrowserRouter([
   {
@@ -24,6 +27,7 @@ const router = createBrowserRouter([
 
 const App = () => {
   const [ uid, setUid ] = useState(null)
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const fetchToken = async () => {
@@ -40,10 +44,15 @@ const App = () => {
       }
     }
     fetchToken()
+
+    if (uid) {
+      dispatch(getUser(uid))
+    }
   }, [uid]) 
 
   return (
     <UidContext.Provider value={uid}>
+      {/* <Navbar /> */}
       <RouterProvider router={router} />
     </UidContext.Provider>
   )
