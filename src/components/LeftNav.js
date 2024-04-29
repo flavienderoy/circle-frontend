@@ -6,19 +6,19 @@ const LeftNav = () => {
     <div className="left-nav-container">
       <div className="icons">
         <div className="icons-bis">
-          <NavLink to='/' exact activeClassName="active-left-nav">
+          <NavLink to='/'>
             <img src="./img/icons/home.svg" alt="home" />
           </NavLink>
-          <NavLink to='/public' exact activeClassName="active-left-nav">
+          <NavLink to='/public'>
             <img src="./img/icons/rocket.svg" alt="rocket" />
           </NavLink>
-          <NavLink to='/profil' exact activeClassName="active-left-nav">
+          <NavLink to='/profil'>
             <img src="./img/icons/user.svg" alt="user" />
           </NavLink>
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 export default LeftNav;
