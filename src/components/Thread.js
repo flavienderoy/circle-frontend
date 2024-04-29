@@ -1,30 +1,38 @@
 import React, { useEffect, useState, isEmpty } from "react";
 import { useDispatch, useSelector } from "react-redux"; 
 import { getPosts } from "../actions/post.actions";
+import axios from 'axios'
 
 const Thread = () => {
-    const [loadPost, setLoadPost] = useState(true);
-    //const dispatch = useDispatch();
-    //const posts = useSelector((state) => state.postReducer);
+    const [posts, setPosts] = useState([]);
 
-    const posts = getPosts()
-
-    /*useEffect(() => {
-        if (loadPost) {
-            dispatch(getPosts());
-            setLoadPost(false);
-        }
-    }, [loadPost, dispatch]);*/
     useEffect(() => {
-         this.posts = getPosts()
+        axios({
+            method: "get",
+            url: `${process.env.REACT_APP_API_URL}api/post`,
+          })
+            .then((res) => {
+                console.log("toto", res.data)
+                setPosts(res.data)
+            })
+            .catch((err) => console.log(err))
     }, [])
     
+    if(posts.length==0) return "No posts!"
+
     return (
         <div className="thread-container">
             <ul>
+                {/*posts ? (
+                    <li>coucou</li>
+                ) : (
+                    posts.each((post) => {
+                        return <li>test</li>;
+                    })
+                )*/}
                 {
                     posts.map((post) => {
-                        return <li>test</li>;
+                        return <li key={post._id}>{post.message}</li>;
                     })
                 }
             </ul>
