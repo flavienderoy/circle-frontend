@@ -7,7 +7,7 @@ import { userReducer } from '../../reducers/user.reducer'
 import { usersReducer } from '../../reducers/users.reducer'
 import { updateBio } from '../../actions/user.actions'
 import { dateParser } from '../Utils'
-import { getUsers } from '../../actions/user.actions';
+import { getUsers } from '../../actions/user.actions'
 import FollowHandler from './FollowHandler'
 
 
@@ -73,21 +73,20 @@ const UpdateProfil = () => {
             </span>
             <ul>
               {usersData.map((user) => {
-                console.log("user", user)
                 for (let i = 0; i < userData.following.length; i++) {
                   if (user._id === userData.following[ i ]) {
+                    const imageUrl = `http://localhost:2415/${user.picture.replace('./', '')}`
                     return (
                       <li key={user._id}>
-                        <img src={`https://localhost:2415/${user.picture}`} alt="user-pic" />
+                        <img src={imageUrl} alt="user-pic" />
                         <h4>{user.pseudo}</h4>
                         <div className="follow-handler">
-                          <FollowHandler idToFollow={user._id}/>
+                          <FollowHandler idToFollow={user._id} />
                         </div>
                       </li>
                     )
                   }
                 }
-                return null
               })}
             </ul>
           </div>
@@ -104,20 +103,20 @@ const UpdateProfil = () => {
               {usersData.map((user) => {
                 for (let i = 0; i < userData.followers.length; i++) {
                   if (user._id === userData.followers[ i ]) {
+                    const imageUrl = `http://localhost:2415/${user.picture.replace('./', '')}`
                     return (
                       <li key={user._id}>
-                        <img src={`https://localhost:2415/${user.picture}`} alt="user-pic" />
+                        <img src={imageUrl} alt="user-pic" />
                         <h4>{user.pseudo}</h4>
                         <div className="follow-handler">
-                          test
+                          <FollowHandler idToFollow={user._id} />
                         </div>
                       </li>
                     )
                   }
                 }
-                return null
               })}
-              
+
             </ul>
           </div>
         </div>
