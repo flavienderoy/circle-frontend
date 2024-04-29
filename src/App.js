@@ -13,14 +13,17 @@ import { getUser } from './actions/user.actions'
 const router = createBrowserRouter([
   {
     path: '/',
+    name: "home",
     element: <HomePage />
   },
   {
     path: '/public',
+    name: "public",
     element: <PublicPage />
   },
   {
     path: '/profil',
+    name: "profil",
     element: <ProfilPage />
   }
 ])
@@ -52,7 +55,7 @@ const App = () => {
 
   return (
     <UidContext.Provider value={uid}>
-      {/* <Navbar /> */}
+      {/*<Navbar />*/}
       <RouterProvider router={router} />
     </UidContext.Provider>
   )

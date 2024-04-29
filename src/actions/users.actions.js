@@ -10,7 +10,7 @@ export const getUsers = (uid) => {
     })
       .then((res) => {
         dispatch({ type: GET_USERS, payload: res.data })
+        // return res.data
       })
       .catch((err) => console.log(err))
-  }
-}
+}}
