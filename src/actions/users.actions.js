@@ -9,8 +9,8 @@ export const getUsers = (uid) => {
       url: `${process.env.REACT_APP_API_URL}api/user/getAll`,
     })
       .then((res) => {
-        dispatch({ type: GET_USERS, payload: res.data })
+        //dispatch({ type: GET_USERS, payload: res.data })
+        return res.data
       })
       .catch((err) => console.log(err))
-  }
-}
+}}
