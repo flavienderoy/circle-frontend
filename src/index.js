@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import App from './App'
 import './styles/index.scss'
 import reportWebVitals from './reportWebVitals'
-import { Provider, createStoreHook } from 'react-redux';
+import { Provider } from 'react-redux';
 import { composeWithDevTools } from '@redux-devtools/extension'
 import { applyMiddleware, createStore } from 'redux'
 import { thunk } from 'redux-thunk'
