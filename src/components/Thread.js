@@ -1,6 +1,7 @@
 import React, { useEffect, useState, isEmpty } from "react";
 import { useDispatch, useSelector } from "react-redux"; 
 import { getPosts } from "../actions/post.actions";
+import  Card  from "../components/Post/Card";
 import axios from 'axios'
 
 const Thread = () => {
@@ -32,7 +33,7 @@ const Thread = () => {
                 )*/}
                 {
                     posts.map((post) => {
-                        return <li key={post._id}>{post.message}</li>;
+                        return <Card key={post._id}>{post.message}</Card>;
                     })
                 }
             </ul>
