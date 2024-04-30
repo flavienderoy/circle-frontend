@@ -14,35 +14,60 @@ const LikeButton = ({ post }) => {
 
   const like = () => {
     dispatch(likePost(post._id, uid))
-    setLiked(true)
+      .then(() => {
+        // Mettre à jour liked une fois que la requête est terminée
+        setLiked(true)
+      })
   }
 
   const unlike = () => {
     dispatch(unlikePost(post._id, uid))
-    setLiked(false)
+      .then(() => {
+        // Mettre à jour liked une fois que la requête est terminée
+        setLiked(false)
+      })
   }
 
-  useEffect(() => {
-    if (post.likers.includes(uid)) setLiked(true)
-    else setLiked(false)
-  }, [uid, post.likers, liked])
+  /*useEffect(() => {
+    if (post.likers.includes(uid)) {
+      console.log('liked true')
+      setLiked(true)
+    } else { 
+      console.log('liked false')
+      setLiked(false)
+    }
+  }, [ uid, post.likers, liked ])*/
 
-    return (
+
+
+  useEffect(() => {
+    if (post.likers.includes(uid)) {
+      console.log('liked true')
+      setLiked(true)
+    } else {
+      console.log('liked false')
+      setLiked(false)
+    }
+  }, [])
+
+
+
+  return (
     <div className="like-container">
       {uid === null && (
         <Popup
           trigger={<img src="./img/icons/heart.svg" alt="like" />}
-          position={["bottom center", "bottom right", "bottom left"]}
+          position={[ "bottom center", "bottom right", "bottom left" ]}
           closeOnDocumentClick
         >
           <div>Connectez-vous pour aimer un poste !</div>
         </Popup>
       )}
       {uid && liked === false && (
-        <img src="./img/icons/heart.svg" onClick={like}/>
+        <img src="./img/icons/heart.svg" onClick={like} alt="like" />
       )}
       {uid && liked && (
-        <img src="./img/icons/heart-filled.svg" onClick={unlike}/>
+        <img src="./img/icons/heart-filled.svg" onClick={unlike} alt="unlike" />
       )}
       <span>{post.likers.length}</span>
     </div>
