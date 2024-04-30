@@ -2,33 +2,12 @@ import axios from 'axios'
 
 // posts
 export const GET_POSTS = "GET_POSTS"
+export const ADD_POST = "ADD_POST"
 export const LIKE_POST = "LIKE_POST"
 export const UNLIKE_POST = "UNLIKE_POST"
 export const UPDATE_POST = "UPDATE_POST"
 export const DELETE_POST = "DELETE_POST"
 
-/*export const getPosts = () => {
-    return (dispatch) => {
-      return axios
-        .get(`${process.env.REACT_APP_API_URL}api/post/`)
-        .then((res) => {
-          console.log("action posts", res)
-          //const array = res.data.slice(0, num);
-          //dispatch({ type: GET_POSTS, payload: array });       
-        })
-        .catch((err) => console.log(err));
-
-        return axios({
-          method: "get",
-          url: `${process.env.REACT_APP_API_URL}api/post`,
-        })
-          .then((res) => {
-            //dispatch({ type: GET_USERS, payload: res.data })
-            return res.data
-          })
-          .catch((err) => console.log(err))
-    };
-  };*/
 
 export const getPosts = () => {
   return axios({
@@ -37,6 +16,13 @@ export const getPosts = () => {
   })
     .then((res) => { console.log("RES", res); return res.data })
     .catch((err) => console.log(err))
+}
+
+export const addPost = (data) => {
+   axios({
+    method: "post",
+    url: `${process.env.REACT_APP_API_URL}api/post/`, data
+  })
 }
 
 export const likePost = (postId, userId) => {

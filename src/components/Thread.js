@@ -4,13 +4,22 @@ import { getPosts } from "../actions/post.actions";
 import axios from 'axios'
 import Card from './Post/Card'
 
-const Thread = () => {
+const Thread = ({isReloadPost, setIsReloadPost}) => {
     const [posts, setPosts] = useState([]);
 
     const dispatch = useDispatch();
     const [count, setCount] = useState(5);
 
     useEffect(() => {
+        getAllPost()
+    }, [])
+
+    useEffect(() => {
+        getAllPost()
+        setIsReloadPost(false)
+    }, [isReloadPost])
+    
+    function getAllPost() {
         axios({
             method: "get",
             url: `${process.env.REACT_APP_API_URL}api/post/`,
@@ -20,8 +29,8 @@ const Thread = () => {
                 setPosts(res.data)
             })
             .catch((err) => console.log(err))
-    }, [])
-    
+    }
+
     if(posts.length==0) return "Aucun poste sur votre feed pour le moment !"
 
     return (
