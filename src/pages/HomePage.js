@@ -6,6 +6,7 @@ import NewPostForm from '../components/Post/NewPostForm';
 import Log from '../components/log';
 import { useContext, useState } from 'react';
 import { UidContext } from '../components/AppContext';
+import FriendsHint from '../components/profil/FriendsHint';
 
 const Home = () => {
 const uid = useContext(UidContext);
@@ -24,6 +25,13 @@ const addPostFormReloadAllPosts = () => {
         {uid ? <NewPostForm reloadPost={addPostFormReloadAllPosts} /> : <Log signin={true} signup={false}/>}
         </div>
         <Thread isReloadPost={isReloadPost} setIsReloadPost={setIsReloadPost}/>
+      </div>
+      <div className="right-side">
+        <div className="right-side-container">
+          <div className="wrapper">
+            {uid && <FriendsHint />}
+          </div>
+        </div>
       </div>
     </div>
   )

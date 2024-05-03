@@ -77,11 +77,11 @@ const NewPostForm = ({ reloadPost }) => {
           <div className='data'>
             <p><span>{userData.following ? userData.following.length : 0}
             </span> {" "}
-              Abonnement {userData.following && userData.following.length > 1 ? "s" : null}
+              Abonnement{userData.following && userData.following.length > 1 ? "s" : null}
             </p>
             <p><span>{userData.followers ? userData.followers.length : 0}
             </span> {" "}
-              Abonné {userData.followers && userData.followers.length > 1 ? "s" : null}
+              Abonné{userData.followers && userData.followers.length > 1 ? "s" : null}
             </p>
           </div>
           <NavLink exact to="/profil">
