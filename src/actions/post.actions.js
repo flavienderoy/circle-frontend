@@ -13,10 +13,12 @@ export const getPosts = () => {
   return axios({
     method: "get",
     url: `${process.env.REACT_APP_API_URL}api/post/`,
+    
   })
     .then((res) => { console.log("RES", res); return res.data })
     .catch((err) => console.log(err))
 }
+
 
 export const addPost = (data) => {
    axios({
