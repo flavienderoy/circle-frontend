@@ -1,4 +1,4 @@
-import { GET_POSTS, LIKE_POST, UNLIKE_POST, UPDATE_POST, DELETE_POST } from '../actions/post.actions'
+import { GET_POSTS, LIKE_POST, UNLIKE_POST, UPDATE_POST, DELETE_POST, EDIT_COMMENT, DELETE_COMMENT } from '../actions/post.actions'
 
 const initialState = [] // Initialiser state comme un tableau vide
 
@@ -25,7 +25,7 @@ export default function postReducer(state = initialState, action) {
           }
         }
         return post
-      });
+      })
     case UPDATE_POST:
       return state.map((post) => {
         if (post._id === action.payload.postId) {
@@ -34,9 +34,34 @@ export default function postReducer(state = initialState, action) {
             message: action.payload.message,
           }
         } else return post
-      });
+      })
     case DELETE_POST:
-      return state.filter((post) => post._id !== action.payload.postId);
+      return state.filter((post) => post._id !== action.payload.postId)
+    case EDIT_COMMENT:
+      return state.map((post) => {
+        if (post._id === action.payload.postId) {
+          return {
+            ...post,
+            comments: post.comments.map((comment) => {
+              if (comment._id === action.payload.commentId) {
+                return {
+                  ...comment,
+                  text: action.payload.text,
+                }
+              } else return comment
+            }),
+          }
+        } else return post
+      })
+    case DELETE_COMMENT:
+      return state.map((post) => {
+        if (post._id === action.payload.postId) {
+          return {
+            ...post,
+            comments: post.comments.filter((comment) => comment._id !== action.payload.commentId),
+          }
+        } else return post
+      })
     default:
       return state
   }
