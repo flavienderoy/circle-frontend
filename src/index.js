@@ -8,8 +8,9 @@ import { composeWithDevTools } from '@redux-devtools/extension'
 import { applyMiddleware, createStore } from 'redux'
 import { thunk } from 'redux-thunk'
 import logger from 'redux-logger'
-import rootReducer from './reducers' 
+import rootReducer from './reducers'
 import { getUsers } from './actions/users.actions'
+import { getPosts } from './actions/post.actions'
 
 const store = createStore(
   rootReducer, composeWithDevTools(applyMiddleware(thunk, logger))
