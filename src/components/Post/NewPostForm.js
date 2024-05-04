@@ -7,33 +7,30 @@ import { useDispatch } from 'react-redux'
 import { addPost, getPosts } from '../../actions/post.actions'
 
 const NewPostForm = ({ reloadPost }) => {
-
   const [ isLoading, setIsLoading ] = useState(true)
-
-  const [ message, setMessage ] = useState("")
-
-  const [ postPiscture, setPostPicture ] = useState(null)
-
-  const [ video, setVideo ] = useState("")
-
+  const [ message, setMessage ] = useState('')
+  const [ postPicture, setPostPicture ] = useState(null)
+  const [ video, setVideo ] = useState('')
   const [ file, setFile ] = useState()
+  const [ visibility, setVisibility ] = useState('public') // Ajout de l'état pour la visibilité
+  console.log("VISIBILITY", visibility)
 
   const userData = useSelector((state) => state.userReducer)
-
   const dispatch = useDispatch()
 
   const handlePost = async () => {
-    if (message || postPiscture || video) {
+    if (message || postPicture || video) {
       const data = new FormData()
       data.append('posterId', userData._id)
       data.append('message', message)
+      data.append('visibility', visibility) // Ajout de la visibilité dans les données envoyées
       if (file) data.append('file', file)
       data.append('video', video)
       addPost(data)
       reloadPost()
       cancelPost()
     } else {
-      alert("Veuillez entrer un message")
+      alert('Veuillez entrer un message')
     }
   }
 
@@ -86,7 +83,7 @@ const NewPostForm = ({ reloadPost }) => {
           </div>
           <NavLink exact to="/profil">
             <div className='user-info'>
-                <img src={`http://localhost:2415/${userData?.picture?.replace('./', '')}`} alt="user-pic" />
+              <img src={`http://localhost:2415/${userData?.picture?.replace('./', '')}`} alt="user-pic" />
             </div>
           </NavLink>
           <div className='post-form'>
@@ -97,7 +94,7 @@ const NewPostForm = ({ reloadPost }) => {
               onChange={(e) => setMessage(e.target.value)}
               value={message}
             />
-            {message || postPiscture || video.length > 20 ? (
+            {message || postPicture || video.length > 20 ? (
               <li className='card-container'>
                 <div className='card-left'>
                   <img src={`http://localhost:2415/${userData.picture.replace('./', '')}`} alt="user-pic" />
@@ -111,7 +108,7 @@ const NewPostForm = ({ reloadPost }) => {
                   </div>
                   <div className='content'>
                     <p>{message}</p>
-                    <img src={postPiscture} alt='' />
+                    <img src={postPicture} alt='' />
                     {video && (
                       <iframe
                         src={video}
@@ -139,11 +136,21 @@ const NewPostForm = ({ reloadPost }) => {
                   <button onClick={() => setVideo("")}>Supprimer la vidéo</button>
                 )}
               </div>
-              <div className='btn-send'>
-                {message || postPiscture || video.length > 20 ? (
-                  <button className='cancel' onClick={cancelPost}>Annuler message</button>
+              <div className="btn-send">
+                {(message || postPicture || video.length > 20) ? (
+                  <>
+                    <div className="visibility-toggle">
+                      <span className={`text ${visibility === 'public' ? 'active' : ''}`} onClick={() => setVisibility('public')}>Publique</span>
+                      <label className="switch">
+                        <input type="checkbox" checked={visibility === 'private'} onChange={() => setVisibility(visibility === 'public' ? 'private' : 'public')} />
+                        <span className="slider round"></span>
+                      </label>
+                      <span className={`text ${visibility === 'private' ? 'active' : ''}`} onClick={() => setVisibility('private')}>Privé</span>
+                    </div>
+                    <button className="cancel" onClick={cancelPost}>Annuler message</button>
+                  </>
                 ) : null}
-                <button className='send' onClick={handlePost}>Envoyer</button>
+                <button className="send" onClick={handlePost}>Envoyer</button>
               </div>
             </div>
           </div>

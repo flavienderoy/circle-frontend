@@ -1,20 +1,20 @@
 import React from 'react'
-import Navbar from '../components/Navbar';
+import Navbar from '../components/Navbar'
 import LeftNav from '../components/LeftNav'
-import Thread from '../components/Thread';
-import NewPostForm from '../components/Post/NewPostForm';
-import Log from '../components/log';
-import { useContext, useState } from 'react';
-import { UidContext } from '../components/AppContext';
-import FriendsHint from '../components/profil/FriendsHint';
+import ThreadHome from '../components/ThreadHome'
+import NewPostForm from '../components/Post/NewPostForm'
+import Log from '../components/log'
+import { useContext, useState } from 'react'
+import { UidContext } from '../components/AppContext'
+import FriendsHint from '../components/profil/FriendsHint'
 
 const Home = () => {
-const uid = useContext(UidContext);
-const [isReloadPost, setIsReloadPost] = useState(false);
+  const uid = useContext(UidContext)
+  const [ isReloadPost, setIsReloadPost ] = useState(false)
 
-const addPostFormReloadAllPosts = () => {
-  setIsReloadPost(!isReloadPost);
-}
+  const addPostFormReloadAllPosts = () => {
+    setIsReloadPost(!isReloadPost)
+  }
 
   return (
     <div className='home'>
@@ -22,9 +22,9 @@ const addPostFormReloadAllPosts = () => {
       <LeftNav />
       <div className='main'>
         <div className='home-header'>
-        {uid ? <NewPostForm reloadPost={addPostFormReloadAllPosts} /> : <Log signin={true} signup={false}/>}
+          {uid ? <NewPostForm reloadPost={addPostFormReloadAllPosts} /> : <Log signin={true} signup={false} />}
         </div>
-        <Thread isReloadPost={isReloadPost} setIsReloadPost={setIsReloadPost}/>
+        <ThreadHome isReloadPost={isReloadPost} setIsReloadPost={setIsReloadPost} />
       </div>
       <div className="right-side">
         <div className="right-side-container">
@@ -37,4 +37,4 @@ const addPostFormReloadAllPosts = () => {
   )
 }
 
-export default Home;
+export default Home

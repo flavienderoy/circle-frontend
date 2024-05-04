@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
 import LeftNav from '../components/LeftNav'
-import Thread from '../components/Thread'
+import ThreadPublic from '../components/ThreadPublic'
 import NewPostForm from '../components/Post/NewPostForm'
 import Log from '../components/log'
 import { useContext, useState } from 'react'
@@ -24,7 +24,7 @@ const Public = () => {
         <div className='home-header'>
           {uid ? <NewPostForm reloadPost={addPostFormReloadAllPosts} /> : <Log signin={true} signup={false} />}
         </div>
-        <Thread isReloadPost={isReloadPost} setIsReloadPost={setIsReloadPost} />
+        <ThreadPublic isReloadPost={isReloadPost} setIsReloadPost={setIsReloadPost} />
       </div>
       <div className="right-side">
         <div className="right-side-container">

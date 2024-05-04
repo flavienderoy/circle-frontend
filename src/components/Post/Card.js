@@ -54,16 +54,22 @@ const Card = ({ post }) => {
                     <div className="card-right">
                         <div className="card-header">
                             <div className="pseudo">
-                                <h3>{
-                                    !isEmpty(usersData[ 0 ]) &&
-                                    usersData.map((user) => {
-                                        if (user._id === post.posterId) {
-                                            return user.pseudo
-                                        } else {
-                                            return null
+                                    <h3>
+                                        {
+                                            !isEmpty(usersData[ 0 ]) && (
+                                                usersData
+                                                    .filter((user) => user._id === post.posterId)
+                                                    .map((user) => (
+                                                        <React.Fragment key={user._id}>
+                                                            {user.pseudo}
+                                                            {post.visibility === "private" && (
+                                                                <i className="fas fa-lock" style={{ marginLeft: '5px' }}></i>
+                                                            )}
+                                                        </React.Fragment>
+                                                    ))
+                                            )
                                         }
-                                    }).join('')
-                                }</h3>
+                                    </h3>
                                 {post.posterId !== userData._id && (
                                     <FollowHandler idToFollow={post.posterId} type={"card"} />
                                 )}</div>
