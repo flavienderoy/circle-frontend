@@ -5,6 +5,7 @@ export const UPLOAD_PICTURE = "UPLOAD_PICTURE"
 export const UPDATE_BIO = "UPDATE_BIO"
 export const FOLLOW_USER = "FOLLOW_USER"
 export const UNFOLLOW_USER = "UNFOLLOW_USER"
+export const DELETE_USER = "DELETE_USER"
 
 export const GET_USER_ERRORS = "GET_USER_ERRORS"
 
@@ -81,5 +82,22 @@ export const unfollowUser = (followerId, idToUnfollow) => {
         dispatch({ type: UNFOLLOW_USER, payload: { idToUnfollow } })
       })
       .catch((err) => console.log(err))
+  }
+}
+
+export const deleteUser = (userId) => {
+  return async (dispatch) => {
+    try {
+      // Supprimer tous les posts de l'utilisateur
+      await axios.delete(`${process.env.REACT_APP_API_URL}api/post/user/${userId}`)
+
+      // Une fois que tous les posts ont été supprimés, supprimer l'utilisateur
+      await axios.delete(`${process.env.REACT_APP_API_URL}api/user/${userId}`)
+
+      // Mettre à jour l'état Redux après la suppression réussie
+      dispatch({ type: DELETE_USER, payload: { userId } })
+    } catch (error) {
+      console.log(error)
+    }
   }
 }

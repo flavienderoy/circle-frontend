@@ -1,5 +1,5 @@
 import React from 'react';
-import { GET_USER, UPLOAD_PICTURE, UPDATE_BIO, FOLLOW_USER, UNFOLLOW_USER } from '../actions/user.actions';
+import { GET_USER, UPLOAD_PICTURE, UPDATE_BIO, FOLLOW_USER, UNFOLLOW_USER, DELETE_USER } from '../actions/user.actions';
 
 const initialState = {};
 
@@ -27,6 +27,8 @@ export default function userReducer(state = initialState, action) {
         ...state,
         following: state.following.filter((id) => id !== action.payload.idToUnfollow)
       };
+    case 'DELETE_USER':
+      return state.filter((user) => user._id !== action.payload.userId)
     default:
       return state;
   }
