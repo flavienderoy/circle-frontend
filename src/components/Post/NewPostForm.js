@@ -142,7 +142,7 @@ const NewPostForm = ({ reloadPost }) => {
                     <div className="visibility-toggle">
                       <span className={`text ${visibility === 'public' ? 'active' : ''}`} onClick={() => setVisibility('public')}>Publique</span>
                       <label className="switch">
-                        <input type="checkbox" checked={visibility === 'private'} onChange={() => setVisibility(visibility === 'public' ? 'private' : 'public')} />
+                          <input type="checkbox" checked={visibility === 'private'} onChange={() => setVisibility(visibility === 'private' ? 'public' : 'private')}/>
                         <span className="slider round"></span>
                       </label>
                       <span className={`text ${visibility === 'private' ? 'active' : ''}`} onClick={() => setVisibility('private')}>Privé</span>

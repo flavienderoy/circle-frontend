@@ -18,10 +18,9 @@ const ThreadHome = ({ isReloadPost, setIsReloadPost }) => {
       .then((res) => {
         const filteredPosts = res.data.filter(post => {
           if (post.visibility === "public") return true
-          if (post.visibility === "private" && user.following.includes(post.posterId)) return true
-          return false
+          if (post.visibility === "private" && (user.following.includes(post.posterId) || post.posterId === user._id)) return true
         })
-        setPosts(filteredPosts)
+        setPosts(filteredPosts);
       })
       .catch((err) => console.log(err))
   }
