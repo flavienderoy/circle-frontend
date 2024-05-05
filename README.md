@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+# Circle Front-end
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Ce projet constitue la partie front-end de l'application Circle.
 
-## Available Scripts
+### Installation
 
-In the project directory, you can run:
+- **Cloner le dépôt depuis GitHub :**
+  Vous pouvez cloner le dépôt en utilisant la commande `git clone https://github.com/flavienderoy/circle-frontend.git`.
 
-### `npm start`
+- **Installer les dépendances avec npm :**
+  Utilisez la commande `npm install` pour installer toutes les dépendances nécessaires au projet.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Configurer le fichier .env :**
+  Assurez-vous de bien configurer le fichier `.env` en fonction de votre réseau ou des paramètres requis par l'application.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Lancer l'application :**
+  Une fois les dépendances installées et le fichier `.env` configuré, lancez l'application avec la commande `npm start`.
 
-### `npm test`
+- **Utilisation :**
+  Assurez-vous d'avoir configuré et lancé correctement la partie back-end de l'application.
+  Vous pouvez maintenant accéder à l'interface utilisateur en ouvrant votre navigateur et en visitant http://localhost:3000 ou le port que vous aurez choisi.
+  Explorez les différentes fonctionnalités de l'application en naviguant à travers les différentes pages et en interagissant avec les composants.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Suite**
+Une fois que la partie Front-End fonctionne correctement et est connectée à la partie Back-End, vous pourrez commencer à utiliser pleinement l'application Circle.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **Problèmes de CORS :**
+  Si vous rencontrez des problèmes de CORS, vous pouvez ajouter les configurations suivantes dans le fichier `server.js` :
+  ```javascript
+  const corsOptions = {
+    origin: process.env.CLIENT_URL,
+    credentials: true,
+    'allowedHeaders': [ 'sessionId', 'Content-Type' ],
+    'exposedHeaders': [ 'sessionId' ],
+    'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    'preflightContinue': false
+  }
+  app.use(cors(corsOptions));
+  ```

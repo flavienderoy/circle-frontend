@@ -16,16 +16,25 @@ const ThreadHome = ({ isReloadPost, setIsReloadPost }) => {
   const getAllPosts = () => {
     axios.get(`${process.env.REACT_APP_API_URL}api/post/`)
       .then((res) => {
-        const filteredPosts = res.data.filter(post => {
-          if (post.visibility === "public") return true
-          if (post.visibility === "private" && (user.following.includes(post.posterId) || post.posterId === user._id)) return true
+        const posts = res.data || [] // Assurez-vous que res.data est défini et convertissez-le en tableau au besoin
+        const filteredPosts = posts.filter(post => {
+          if (post.visibility === "public" && user.following.includes(post.posterId) || post.posterId === user._id || (user.following && user.following.includes(post.posterId))) {
+            return true
+          }
+          return false
         })
-        setPosts(filteredPosts);
+        setPosts(filteredPosts)
       })
       .catch((err) => console.log(err))
   }
 
-  if (posts.length === 0) return "Aucun poste sur votre fil d'actualité pour le moment !"
+  if (posts.length === 0) {
+    return (
+      <div className="no-posts-message">
+        Aucun poste sur votre fil d'actualité pour le moment !
+      </div>
+    )
+  }
 
   return (
     <div className="thread-container">

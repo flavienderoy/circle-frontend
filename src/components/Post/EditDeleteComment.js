@@ -42,7 +42,7 @@ const EditDeleteComment = ({ comment, postId }) => {
       {isAuthor && edit && (
         <form action="" onSubmit={handleEdit} className='edit-comment-form'>
           <label htmlFor='text' onClick={() => setEdit(!edit)}>
-            Editer
+            Ne plus modifier
           </label>
           <br />
           <input
