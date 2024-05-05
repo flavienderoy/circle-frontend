@@ -1,10 +1,9 @@
 
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
-import { isEmpty, timestampParser } from '../Utils'
+import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { addPost, getPosts } from '../../actions/post.actions'
+import { addPost } from '../../actions/post.actions'
+import { isEmpty, timestampParser } from '../Utils'
 
 const NewPostForm = ({ reloadPost }) => {
   const [ isLoading, setIsLoading ] = useState(true)
@@ -12,8 +11,7 @@ const NewPostForm = ({ reloadPost }) => {
   const [ postPicture, setPostPicture ] = useState(null)
   const [ video, setVideo ] = useState('')
   const [ file, setFile ] = useState()
-  const [ visibility, setVisibility ] = useState('public') // Ajout de l'état pour la visibilité
-  console.log("VISIBILITY", visibility)
+  const [ visibility, setVisibility ] = useState('public')
 
   const userData = useSelector((state) => state.userReducer)
   const dispatch = useDispatch()
@@ -23,7 +21,7 @@ const NewPostForm = ({ reloadPost }) => {
       const data = new FormData()
       data.append('posterId', userData._id)
       data.append('message', message)
-      data.append('visibility', visibility) // Ajout de la visibilité dans les données envoyées
+      data.append('visibility', visibility)
       if (file) data.append('file', file)
       data.append('video', video)
       addPost(data)

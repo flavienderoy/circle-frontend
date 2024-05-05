@@ -1,14 +1,9 @@
-import React, { useState, useEffect } from 'react'
-import LeftNav from '../LeftNav'
-import NavBar from '../Navbar'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import UploadImg from './UploadImg'
-import { userReducer } from '../../reducers/user.reducer'
-import { usersReducer } from '../../reducers/users.reducer'
 import { updateBio } from '../../actions/user.actions'
 import { dateParser } from '../Utils'
-import { getUsers } from '../../actions/user.actions'
 import FollowHandler from './FollowHandler'
+import UploadImg from './UploadImg'
 
 
 const UpdateProfil = () => {
@@ -16,7 +11,6 @@ const UpdateProfil = () => {
   const [ updateForm, setUpdateForm ] = useState(false)
   const userData = useSelector((state) => state.userReducer)
   const usersData = useSelector((state) => state.usersReducer)
-  console.log("usersDataaaaaa", usersData)
   let imgProfile = ''
   if (userData && userData.picture) {
     let imagePath = userData.picture.substring(1)
@@ -34,8 +28,6 @@ const UpdateProfil = () => {
 
   return (
     <div className="profil-container">
-      <NavBar />
-      <LeftNav />
       <h1>Profil de {userData.pseudo}</h1>
       <div className="update-container">
         <div className="left-part">

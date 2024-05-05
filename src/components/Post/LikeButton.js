@@ -28,18 +28,6 @@ const LikeButton = ({ post }) => {
       })
   }
 
-  /*useEffect(() => {
-    if (post.likers.includes(uid)) {
-      console.log('liked true')
-      setLiked(true)
-    } else { 
-      console.log('liked false')
-      setLiked(false)
-    }
-  }, [ uid, post.likers, liked ])*/
-
-
-
   useEffect(() => {
     if (post.likers.includes(uid)) {
       setLiked(true)
@@ -47,8 +35,6 @@ const LikeButton = ({ post }) => {
       setLiked(false)
     }
   }, [])
-
-
 
   return (
     <div className="like-container">

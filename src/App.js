@@ -55,7 +55,6 @@ const App = () => {
 
   return (
     <UidContext.Provider value={uid}>
-      {/*<Navbar />*/}
       <RouterProvider router={router} />
     </UidContext.Provider>
   )
