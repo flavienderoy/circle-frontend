@@ -17,8 +17,8 @@ const Public = () => {
   }
 
   return (
+    <><Navbar />
     <div className='home'>
-      <Navbar />
       <LeftNav />
       <div className='main'>
         <div className='home-header'>
@@ -34,6 +34,7 @@ const Public = () => {
         </div>
       </div>
     </div>
+    </>
   )
 }
 

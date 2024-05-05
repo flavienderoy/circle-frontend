@@ -82,3 +82,13 @@ nav {
     }
   }
 }
+
+.profil-nav{
+  display : flex;
+  align-items: center;
+  justify-content: center;
+
+  h5{
+    margin: 3px 0 0 2px;
+  }
+}

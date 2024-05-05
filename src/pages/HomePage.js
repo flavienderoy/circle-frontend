@@ -17,23 +17,25 @@ const Home = () => {
   }
 
   return (
-    <div className='home'>
-      <Navbar />
-      <LeftNav />
-      <div className='main'>
-        <div className='home-header'>
-          {uid ? <NewPostForm reloadPost={addPostFormReloadAllPosts} /> : <Log signin={true} signup={false} />}
+    <><Navbar />
+      <div className='home'>
+        <LeftNav />
+        <div className='main'>
+          <div className='home-header'>
+            {uid ? <NewPostForm reloadPost={addPostFormReloadAllPosts} /> : <Log signin={true} signup={false} />}
+          </div>
+          <ThreadHome isReloadPost={isReloadPost} setIsReloadPost={setIsReloadPost} />
         </div>
-        <ThreadHome isReloadPost={isReloadPost} setIsReloadPost={setIsReloadPost} />
-      </div>
-      <div className="right-side">
-        <div className="right-side-container">
-          <div className="wrapper">
-            {uid && <FriendsHint />}
+        <div className="right-side">
+          <div className="right-side-container">
+            <div className="wrapper">
+              {uid && <FriendsHint />}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+      </>
+
   )
 }
 

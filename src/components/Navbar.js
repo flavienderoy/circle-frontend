@@ -22,7 +22,7 @@ const Navbar = () => {
         {uid ? (
           <ul>
             <li className="welcome">
-              <NavLink exact to="/profil">
+              <NavLink className="profil-nav" exact to="/profil">
                 <img src="./img/icons/user.svg" alt="user" />
                 <h5>{userData.pseudo}</h5>
               </NavLink>
