@@ -43,7 +43,7 @@ const Card = ({ post }) => {
                                 !isEmpty(usersData[ 0 ]) &&
                                 usersData.map((user) => {
                                     if (user._id === post.posterId) {
-                                        return `http://localhost:2415/${user.picture.replace('./uploads', '')}`
+                                        return `${process.env.SERVER_URL}${user.picture.replace('./uploads', '')}`
                                     } else {
                                         return null
                                     }
