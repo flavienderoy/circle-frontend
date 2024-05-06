@@ -64,7 +64,7 @@ const Card = ({ post }) => {
                                                     <React.Fragment key={user._id}>
                                                         {user.pseudo}
                                                         {post.visibility === "private" && (
-                                                            <i className="fas fa-lock" style={{ marginLeft: '5px' }}></i>
+                                                            <img src="./img/icons/lock.svg" style={{width: 20, height: 20, marginLeft: 3}} alt="private" />
                                                         )}
                                                     </React.Fragment>
                                                 ))
