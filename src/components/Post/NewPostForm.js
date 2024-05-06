@@ -81,7 +81,7 @@ const NewPostForm = ({ reloadPost }) => {
           </div>
           <NavLink exact to="/profil">
             <div className='user-info'>
-              <img src={`http://localhost:2415/${userData?.picture?.replace('./', '')}`} alt="user-pic" />
+              <img src={`${process.env.SERVER_URL}${userData?.picture?.replace('./', '')}`} alt="user-pic" />
             </div>
           </NavLink>
           <div className='post-form'>
@@ -95,7 +95,7 @@ const NewPostForm = ({ reloadPost }) => {
             {message || postPicture || video.length > 20 ? (
               <li className='card-container'>
                 <div className='card-left'>
-                  <img src={`http://localhost:2415/${userData.picture.replace('./', '')}`} alt="user-pic" />
+                  <img src={`${process.env.SERVER_URL}${userData.picture.replace('./', '')}`} alt="user-pic" />
                 </div>
                 <div className='card-right'>
                   <div className='card-header'>

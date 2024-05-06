@@ -67,7 +67,7 @@ const UpdateProfil = () => {
               {usersData.map((user) => {
                 for (let i = 0; i < userData.following.length; i++) {
                   if (user._id === userData.following[ i ]) {
-                    const imageUrl = `http://localhost:2415/${user.picture.replace('./', '')}`
+                    const imageUrl = `${process.env.SERVER_URL}${user.picture.replace('./', '')}`
                     return (
                       <li key={user._id}>
                         <img src={imageUrl} alt="user-pic" />
@@ -95,7 +95,7 @@ const UpdateProfil = () => {
               {usersData.map((user) => {
                 for (let i = 0; i < userData.followers.length; i++) {
                   if (user._id === userData.followers[ i ]) {
-                    const imageUrl = `http://localhost:2415/${user.picture.replace('./', '')}`
+                    const imageUrl = `${process.env.SERVER_URL}${user.picture.replace('./', '')}`
                     return (
                       <li key={user._id}>
                         <img src={imageUrl} alt="user-pic" />
