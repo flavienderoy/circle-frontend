@@ -5,27 +5,26 @@ import Card from './Post/Card'
 
 const ThreadHome = ({ isReloadPost, setIsReloadPost }) => {
   const [ posts, setPosts ] = useState([])
-  const user = useSelector(state => state.userReducer)
   const dispatch = useDispatch()
 
   useEffect(() => {
     getAllPosts()
     setIsReloadPost(false)
-  }, [ isReloadPost ])
+  }, [isReloadPost, posts])
 
   const getAllPosts = () => {
-    axios.get(`${process.env.REACT_APP_API_URL}api/post/`)
+    axios({
+      method: "get",
+      url: `${process.env.REACT_APP_API_URL}api/post/home`,
+      withCredentials: true,
+    })
       .then((res) => {
-        const posts = res.data || [] // Assurez-vous que res.data est défini et convertissez-le en tableau au besoin
-        const filteredPosts = posts.filter(post => {
-          if (post.visibility === "public" && user.following.includes(post.posterId) || post.posterId === user._id || (user.following && user.following.includes(post.posterId))) {
-            return true
-          }
-          return false
-        })
-        setPosts(filteredPosts)
+        const posts = res.data || []
+        setPosts(posts)
       })
-      .catch((err) => console.log(err))
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
   if (posts.length === 0) {

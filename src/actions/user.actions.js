@@ -14,6 +14,7 @@ export const getUser = (uid) => {
     return axios({
       method: "get",
       url: `${process.env.REACT_APP_API_URL}api/user/${uid}`,
+      withCredentials: true,
     })
       .then((res) => {
         dispatch({ type: GET_USER, payload: res.data })
@@ -48,6 +49,7 @@ export const updateBio = (userId, bio) => {
       method: "put",
       url: `${process.env.REACT_APP_API_URL}api/user/` + userId,
       data: { bio },
+      withCredentials: true,
     })
       .then((res) => {
         dispatch({ type: UPDATE_BIO, payload: bio })
@@ -63,6 +65,7 @@ export const followUser = (followerId, idToFollow) => {
       method: "patch",
       url: `${process.env.REACT_APP_API_URL}api/user/follow/` + followerId,
       data: { idToFollow },
+      withCredentials: true,
     })
       .then((res) => {
         dispatch({ type: FOLLOW_USER, payload: { idToFollow } })
@@ -77,6 +80,7 @@ export const unfollowUser = (followerId, idToUnfollow) => {
       method: "patch",
       url: `${process.env.REACT_APP_API_URL}api/user/unfollow/` + followerId,
       data: { idToUnfollow },
+      withCredentials: true,
     })
       .then((res) => {
         dispatch({ type: UNFOLLOW_USER, payload: { idToUnfollow } })

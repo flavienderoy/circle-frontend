@@ -7,6 +7,7 @@ export const getUsers = (uid) => {
     return axios({
       method: "get",
       url: `${process.env.REACT_APP_API_URL}api/user/getAll`,
+      withCredentials: true,
     })
       .then((res) => {
         dispatch({ type: GET_USERS, payload: res.data })
