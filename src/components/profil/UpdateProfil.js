@@ -14,7 +14,7 @@ const UpdateProfil = () => {
   let imgProfile = ''
   if (userData && userData.picture) {
     let imagePath = userData.picture.substring(1)
-    imgProfile = "http://localhost:2415" + imagePath
+    imgProfile = "http://172.16.70.200:2415" + imagePath
   }
   const [ followingPopup, setFollowingPopup ] = useState(false)
   const [ followersPopup, setFollowersPopup ] = useState(false)

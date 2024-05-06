@@ -90,7 +90,7 @@ const Card = ({ post }) => {
                             </div>
                         )}
                         {post.picture && (
-                            <img src={`${process.env.SERVER_URL}client/public/${post.picture.replace('./', '')}`} className="card-pic" alt="card-pic" />
+                                <img src={`${process.env.SERVER_URL}client/public/${post.picture.replace('./', '')}`} className="card-pic" alt="card-pic" />
                         )}
                         {post.video && (
                             <iframe
