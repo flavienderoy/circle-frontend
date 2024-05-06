@@ -28,15 +28,21 @@ export const uploadPicture = (data, id) => {
     return axios
       .post(`${process.env.REACT_APP_API_URL}api/user/upload`, data)
       .then((res) => {
-        // if (res.data.errors) {
-        //   dispatch({ type: GET_USER_ERRORS, payload: res.data.errors })
-        // } else {
-        //   dispatch({ type: GET_USER_ERRORS, payload: "" })
-        return axios
-          .get(`${process.env.REACT_APP_API_URL}api/user/${id}`)
-          .then((res) => {
-            dispatch({ type: UPLOAD_PICTURE, payload: res.data.picture })
+        return axios({
+          // .get(`${process.env.REACT_APP_API_URL}api/user/${id}`)
+          // .then((res) => {
+          //   dispatch({ type: UPLOAD_PICTURE, payload: res.data.picture })
+          // })
+
+            method: "get",
+            url: `${process.env.REACT_APP_API_URL}api/user/${id}`,
+            withCredentials: true,
           })
+            .then((res) => {
+              dispatch({ type: UPLOAD_PICTURE, payload: res.data.picture })
+            })
+            .catch((err) => console.log(err)
+          )
       }
       )
       .catch((err) => console.log(err))
