@@ -18,7 +18,7 @@ Ce projet constitue la partie front-end de l'application Circle.
 
 - **Utilisation :**
   Assurez-vous d'avoir configuré et lancé correctement la partie back-end de l'application.
-  Vous pouvez maintenant accéder à l'interface utilisateur en ouvrant votre navigateur et en visitant http://localhost:3000 ou le port que vous aurez choisi.
+  Vous pouvez maintenant accéder à l'interface utilisateur en ouvrant votre navigateur et en visitant http://172.16.70.200:3000 ou le port que vous aurez choisi.
   Explorez les différentes fonctionnalités de l'application en naviguant à travers les différentes pages et en interagissant avec les composants.
 
 - **Suite**

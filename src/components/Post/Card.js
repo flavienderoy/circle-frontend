@@ -43,7 +43,7 @@ const Card = ({ post }) => {
                                 !isEmpty(usersData[ 0 ]) &&
                                 usersData.map((user) => {
                                     if (user._id === post.posterId) {
-                                        return `http://localhost:2415/${user.picture.replace('./uploads', '')}`
+                                        return `http://172.16.70.200:2415/${user.picture.replace('./uploads', '')}`
                                     } else {
                                         return null
                                     }
@@ -90,7 +90,7 @@ const Card = ({ post }) => {
                             </div>
                         )}
                         {post.picture && (
-                            <img src={`http://localhost:2415/client/public/${post.picture.replace('./', '')}`} className="card-pic" alt="card-pic" />
+                            <img src={`http://172.16.70.200:2415/client/public/${post.picture.replace('./', '')}`} className="card-pic" alt="card-pic" />
                         )}
                         {post.video && (
                             <iframe

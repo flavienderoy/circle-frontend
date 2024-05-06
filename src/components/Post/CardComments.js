@@ -40,7 +40,7 @@ const CardComments = ({ post }) => {
                   !isEmpty(usersData[ 0 ]) &&
                   usersData
                     .map((user) => {
-                      if (user._id === comment.commenterId) return `http://localhost:2415/${user.picture.replace("./uploads", "")}`
+                      if (user._id === comment.commenterId) return `http://172.16.70.200:2415/${user.picture.replace("./uploads", "")}`
                       else return null
                     })
                     .join("")
