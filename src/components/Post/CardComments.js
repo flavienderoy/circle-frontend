@@ -40,7 +40,7 @@ const CardComments = ({ post }) => {
                   !isEmpty(usersData[ 0 ]) &&
                   usersData
                     .map((user) => {
-                      if (user._id === comment.commenterId) return `${process.env.SERVER_URL}${user.picture.replace("./uploads", "")}`
+                      if (user._id === comment.commenterId) return `${process.env.REACT_APP_API_URL}${user.picture.replace("./uploads", "")}`
                       else return null
                     })
                     .join("")

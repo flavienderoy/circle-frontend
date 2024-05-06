@@ -54,7 +54,7 @@ const FriendsHint = () => {
                 if (user === usersData[ i ]._id) {
                   return (
                     <li className="user-hint" key={user}>
-                      <img src={`${process.env.SERVER_URL}${usersData[ i ].picture}`} alt="user-pic" />
+                      <img src={`${process.env.REACT_APP_API_URL}${usersData[ i ].picture}`} alt="user-pic" />
                       <p>{usersData[ i ].pseudo}</p>
                       <FollowHandler
                         idToFollow={usersData[ i ]._id}

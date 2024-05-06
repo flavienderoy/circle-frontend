@@ -43,7 +43,7 @@ const Card = ({ post }) => {
                                 !isEmpty(usersData[ 0 ]) &&
                                 usersData.map((user) => {
                                     if (user._id === post.posterId) {
-                                        return `${process.env.SERVER_URL}${user.picture.replace('./uploads', '')}`
+                                        return `${process.env.REACT_APP_API_URL}${user.picture.replace('./uploads', '')}`
                                     } else {
                                         return null
                                     }
@@ -90,7 +90,7 @@ const Card = ({ post }) => {
                             </div>
                         )}
                         {post.picture && (
-                                <img src={`${process.env.SERVER_URL}client/public/${post.picture.replace('./', '')}`} className="card-pic" alt="card-pic" />
+                                <img src={`${process.env.REACT_APP_API_URL}client/public/${post.picture.replace('./', '')}`} className="card-pic" alt="card-pic" />
                         )}
                         {post.video && (
                             <iframe

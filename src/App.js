@@ -31,7 +31,6 @@ const router = createBrowserRouter([
 const App = () => {
   const [ uid, setUid ] = useState(null)
   const dispatch = useDispatch()
-
   useEffect(() => {
     const fetchToken = async () => {
       try {

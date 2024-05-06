@@ -14,7 +14,8 @@ const UpdateProfil = () => {
   let imgProfile = ''
   if (userData && userData.picture) {
     let imagePath = userData.picture.substring(1)
-    imgProfile = "http://172.16.70.200:2415" + imagePath
+    const serverurl = `${process.env.REACT_APP_API_URL}`.slice(0, -1); 
+    imgProfile = serverurl + imagePath
   }
   const [ followingPopup, setFollowingPopup ] = useState(false)
   const [ followersPopup, setFollowersPopup ] = useState(false)
@@ -67,7 +68,7 @@ const UpdateProfil = () => {
               {usersData.map((user) => {
                 for (let i = 0; i < userData.following.length; i++) {
                   if (user._id === userData.following[ i ]) {
-                    const imageUrl = `${process.env.SERVER_URL}${user.picture.replace('./', '')}`
+                    const imageUrl = `${process.env.REACT_APP_API_URL}${user.picture.replace('./', '')}`
                     return (
                       <li key={user._id}>
                         <img src={imageUrl} alt="user-pic" />
@@ -95,7 +96,7 @@ const UpdateProfil = () => {
               {usersData.map((user) => {
                 for (let i = 0; i < userData.followers.length; i++) {
                   if (user._id === userData.followers[ i ]) {
-                    const imageUrl = `${process.env.SERVER_URL}${user.picture.replace('./', '')}`
+                    const imageUrl = `${process.env.REACT_APP_API_URL}${user.picture.replace('./', '')}`
                     return (
                       <li key={user._id}>
                         <img src={imageUrl} alt="user-pic" />
